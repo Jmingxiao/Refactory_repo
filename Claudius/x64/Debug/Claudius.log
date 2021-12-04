@@ -1,0 +1,54 @@
+﻿  Apple.cpp
+  Collider.cpp
+  Color.cpp
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Color.cpp(15,36): error C2220: the following warning is treated as an error
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Color.cpp(15,36): warning C4458: declaration of 'r' hides class member
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Color.h(5,16): message : see declaration of 'Color::r'
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Color.cpp(15,53): warning C4458: declaration of 'g' hides class member
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Color.h(5,19): message : see declaration of 'Color::g'
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Color.cpp(15,70): warning C4458: declaration of 'b' hides class member
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Color.h(5,22): message : see declaration of 'Color::b'
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Color.cpp(15,87): warning C4458: declaration of 'a' hides class member
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Color.h(5,25): message : see declaration of 'Color::a'
+  Game.cpp
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Game.cpp(18,23): error C2220: the following warning is treated as an error
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Game.cpp(18,23): warning C4458: declaration of 'width' hides class member
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Game.h(25,6): message : see declaration of 'Game::width'
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Game.cpp(18,35): warning C4458: declaration of 'height' hides class member
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Game.h(26,6): message : see declaration of 'Game::height'
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Game.cpp(78,28): warning C4100: 'key': unreferenced formal parameter
+  Image.cpp
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Image.cpp(4,1): error C2220: the following warning is treated as an error
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Image.cpp(4,1): warning C4245: 'initializing': conversion from 'int' to 'unsigned int', signed/unsigned mismatch
+  main.cpp
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\main.cpp(55,16): error C2220: the following warning is treated as an error
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\main.cpp(55,16): warning C4189: 'error': local variable is initialized but not referenced
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\main.cpp(61,15): warning C4189: 'error': local variable is initialized but not referenced
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\main.cpp(139,15): warning C4189: 'error': local variable is initialized but not referenced
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\main.cpp(145,15): warning C4189: 'error': local variable is initialized but not referenced
+  Player.cpp
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Player.cpp(31,28): error C2220: the following warning is treated as an error
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Player.cpp(31,28): warning C4100: 'dt': unreferenced formal parameter
+  Rectangle.cpp
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Rectangle.cpp(15,31): error C2220: the following warning is treated as an error
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Rectangle.cpp(15,31): warning C4458: declaration of 'x' hides class member
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Rectangle.h(5,6): message : see declaration of 'Rectangle::x'
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Rectangle.cpp(15,38): warning C4458: declaration of 'y' hides class member
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Rectangle.h(6,6): message : see declaration of 'Rectangle::y'
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Rectangle.cpp(15,45): warning C4458: declaration of 'w' hides class member
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Rectangle.h(7,6): message : see declaration of 'Rectangle::w'
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Rectangle.cpp(15,52): warning C4458: declaration of 'h' hides class member
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Rectangle.h(8,6): message : see declaration of 'Rectangle::h'
+  Sprite.cpp
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Sprite.cpp(31,30): error C2220: the following warning is treated as an error
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Sprite.cpp(31,30): warning C4458: declaration of 'image' hides class member
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Sprite.h(24,15): message : see declaration of 'Sprite::image'
+  Transform.cpp
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Transform.cpp(27,41): error C2220: the following warning is treated as an error
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Transform.cpp(27,41): warning C4458: declaration of 'rotation' hides class member
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Transform.h(22,8): message : see declaration of 'Transform::rotation'
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Transform.cpp(32,44): warning C4458: declaration of 'rotation' hides class member
+C:\Users\jmx\Desktop\New_ClaudiusBase_Snake\Claudius\Transform.h(22,8): message : see declaration of 'Transform::rotation'
+  Vector2.cpp
+  Running Code Analysis for C/C++...
+  Generating Code...
