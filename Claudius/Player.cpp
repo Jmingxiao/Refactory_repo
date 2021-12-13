@@ -2,124 +2,81 @@
 #include <cmath>
 #include "RenderManager.h"
 #include <iostream>
+#include <utility>
+#include <algorithm>
 
-void Player::Initialize()
+const float Snake::movement_speed = 10.0f;
+const float Snake::starting_x = 300.0f;
+const float Snake::starting_y = 300.0f;
+const std::vector<Vector2> Snake::move_dir = { Vector2(-1,0),Vector2(1,0),Vector2(0,-1),Vector2(0,1), Vector2(0,0)};
+
+void Snake::Initialize() noexcept
 {
-	color.SetColor(0,255,0,0);
-	rect.SetBounds(0, 0, size, size);
-	trans.SetPosition(starting_x, starting_y);
-	player_score = 0;
+	color.SetColor(0, 255, 0, 0);
+	rect.SetBounds(0, 0, snakepart_size, snakepart_size);
+	transform.SetPosition({starting_x, starting_y});
+	snake_length = 0;
+	snakeparts = std::move(std::vector<SnakePart>(50, SnakePart(transform,Color(255,0,0,0),rect)));
+	bodyDiff = std::move(std::vector<Vector2>(50));
+	
+}
 
-	for (int i = 0; i < player_size; i++)
+void Snake::Render(RenderManager& renderManager)
+{
+	renderManager.Render(rect, color, transform);
+
+	std::for_each(snakeparts.begin(), snakeparts.begin() + snake_length,
+		[&](const auto& snakepart) {renderManager.Render(snakepart._rect, snakepart._color, snakepart._transform); });
+}
+
+void Snake::Update()
+{
+	bodyDiff.front() = transform.GetPosition() - snakeparts.front()._transform.GetPosition();
+
+
+	for (size_t i = 1; i < snakeparts.size()-1; i++) 
 	{
-		parts[i].color.SetColor(255, 0, 0, 0);
-		parts[i].rect.SetBounds(0, 0, size, size);
-		parts[i].trans.SetPosition(trans.GetX(), trans.GetY());
+		bodyDiff.at(i) = snakeparts.at(i)._transform.GetPosition() - snakeparts.at(i+1)._transform.GetPosition();
+	}
+
+	const Vector2 speed(movement_speed, movement_speed);
+	transform.ChangePosition(speed * move_dir.at(static_cast<size_t>(direction)));
+
+	snakeparts.front()._transform.ChangePosition(bodyDiff.front());
+	for (size_t i = 1; i < snakeparts.size(); i++)
+	{
+		snakeparts.at(i)._transform.ChangePosition(bodyDiff.at(i-1));
+	}
+
+}
+
+void Snake::OnKeyDown(KeyConfig::KeyCode key) noexcept
+{
+	using namespace KeyConfig;
+	switch (key)
+	{
+	case KeyCode::LEFT_ARROW :
+		direction = Direction::LEFT;
+		break;
+	case KeyCode::RIGHT_ARROW:
+		direction = Direction::RIGHT;
+		break;
+	case KeyCode::UP_ARROW:
+		direction = Direction::UP;
+		break;
+	case KeyCode::DOWN_ARROW:
+		direction = Direction::DOWN;
+		break;
+	default: 
+		direction = Direction::NONE;
+		break;
 	}
 }
 
-void Player::Render(RenderManager& renderManager)
+void Snake::ResetPlayer() noexcept
 {
-	renderManager.Render(rect, color, trans);
+	snake_length = 0;
+	direction = Direction::NONE;
 
-	for (int i = 0; i < player_score; i++)
-	{
-		renderManager.Render(parts[i].rect, parts[i].color, parts[i].trans);
-	}
-}
-
-void Player::Update(double dt)
-{
-	x_array_difference[0] = trans.GetX() - parts[0].trans.GetX();
-	y_array_difference[0] = trans.GetY() - parts[0].trans.GetY();
-
-	for (int i = 1; i < (player_size - 1); i++)
-	{
-			x_array_difference[i] = parts[i].trans.GetX() - parts[i + 1].trans.GetX();
-			y_array_difference[i] = parts[i].trans.GetY() - parts[i + 1].trans.GetY();
-	}
-
-	if (moving_left == true)
-	{
-		trans.ChangePosition(-movement_speed, 0);
-		parts[0].trans.ChangePosition(x_array_difference[0], y_array_difference[0]);
-
-		for (int i = 1; i < player_size; i++)
-		{
-			parts[i].trans.ChangePosition(x_array_difference[i - 1], y_array_difference[i - 1]);
-		}
-	}
-	else if (moving_right == true)
-	{
-		trans.ChangePosition(movement_speed, 0);
-		parts[0].trans.ChangePosition(x_array_difference[0], y_array_difference[0]);
-
-		for (int i = 1; i < player_size; i++)
-		{
-			parts[i].trans.ChangePosition(x_array_difference[i - 1], y_array_difference[i - 1]);
-		}
-	}
-	else if (moving_up == true)
-	{
-		trans.ChangePosition(0, -movement_speed);
-		parts[0].trans.ChangePosition(x_array_difference[0], y_array_difference[0]);
-
-		for (int i = 1; i < player_size; i++)
-		{
-			parts[i].trans.ChangePosition(x_array_difference[i - 1], y_array_difference[i - 1]);
-		}
-	}
-	else if (moving_down == true)
-	{
-		trans.ChangePosition(0, movement_speed);
-		parts[0].trans.ChangePosition(x_array_difference[0], y_array_difference[0]);
-
-		for (int i = 1; i < player_size; i++)
-		{
-			parts[i].trans.ChangePosition(x_array_difference[i - 1], y_array_difference[i - 1]);
-		}
-	}
-}
-
-void Player::OnKeyDown(KeyCode key)
-{
-	if (key == KeyCode::LEFT_ARROW)
-	{
-		moving_left = true;
-		moving_right = false;
-		moving_up = false;
-		moving_down = false;
-	}
-	else if (key == KeyCode::RIGHT_ARROW)
-	{
-		moving_left = false;
-		moving_right = true;
-		moving_up = false;
-		moving_down = false;
-	}
-	else if (key == KeyCode::UP_ARROW)
-	{
-		moving_left = false;
-		moving_right = false;
-		moving_up = true;
-		moving_down = false;
-	}
-	else if (key == KeyCode::DOWN_ARROW)
-	{
-		moving_left = false;
-		moving_right = false;
-		moving_up = false;
-		moving_down = true;
-	}
-}
-
-void Player::ResetPlayer()
-{
-	player_score = 0;
-	moving_right = false;
-	moving_left = false;
-	moving_up = false;
-	moving_down = false;
-
-	trans.SetPosition(starting_x, starting_y);
+	transform.SetPosition({ starting_x, starting_y });
 }

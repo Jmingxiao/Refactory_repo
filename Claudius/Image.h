@@ -2,15 +2,14 @@
 
 struct Image
 {
-	Image();
-	Image(const Image& rhs);
-	Image(unsigned int id, int width, int height);
+	Image() = default;
+	Image(unsigned int id, int width, int height) noexcept;
 
-	unsigned int id;
-	int width;
-	int height;
+	unsigned int _id;
+	int _width;
+	int _height;
 
-	unsigned int GetID();
-	int GetWidth();
-	int GetHeight();
+	constexpr unsigned int GetID() const noexcept;
+	constexpr int GetWidth() const noexcept;
+	constexpr int GetHeight() const noexcept;
 };

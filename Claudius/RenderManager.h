@@ -25,7 +25,7 @@ struct RenderManager
 
 	void Render(const Sprite& sprite, const Transform& trans);
 	void Render(const Rectangle& rect, const Color& color, const Transform& trans);
-	void Clear();
+	void Clear() noexcept;
 
 	std::vector<SpriteEntry> spriteEntries;
 	std::vector<RectEntry> rectEntries;

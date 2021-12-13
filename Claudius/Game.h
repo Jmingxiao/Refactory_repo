@@ -11,25 +11,22 @@ struct ResourceManager;
 
 class Game
 {
-	Player playerOne;
+	Snake snake;
 	Apple apple;
 
 	ResourceManager& m_resourceManager;
 
 public:
-	//Teemu Code Begin.
 
-	// float timer; <- can be used in delta time
-	// float updateInterval; <- check Game.h
+	static const int width;
+	static const int height;
+	static const std::string title;
 
-	int width;
-	int height;
-
-	Game(ResourceManager& resourceManager);
-	~Game();
-	bool Enter(int& width, int& height, std::string& title);
-	void Update(double dt);
+	Game(ResourceManager& resourceManager) noexcept;
+	//bool Enter(int& width, int& height, std::string& title);
+	void Update();
 	void Render(RenderManager& rendererManager);
-	void OnKeyDown(KeyCode key);
-	void OnKeyUp(KeyCode key);
+	void OnKeyDown(KeyConfig::KeyCode key) noexcept;
+
+	constexpr Vector2 RandomPositionGenerator() const noexcept;
 };

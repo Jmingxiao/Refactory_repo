@@ -4,20 +4,19 @@
 
 struct Transform
 {
-	Transform();
-	Transform(const Transform& rhs);
-	Transform(float x, float y, float rotation);
+	Transform() = default;
+	Transform(float x, float y, float rotation) noexcept;
 	
-	void SetPosition(const float x, const float y);
-	void ChangePosition(const float x, const float y);
-	void SetRotation(const float rotation);
-	void ChangeRotation(const float rotation);
+	void SetPosition(const Vector2& position) noexcept;
+	void ChangePosition(const Vector2& position) noexcept;
+	void SetRotation(const float rotation) noexcept;
+	void ChangeRotation(const float rotation) noexcept;
 
-	Vector2 GetPosition();
-	float GetX();
-	float GetY();
-	float GetRotation();
+	Vector2 GetPosition() const noexcept;
+	float GetX() const noexcept;
+	float GetY() const noexcept;
+	constexpr float GetRotation() const noexcept;
 
-	Vector2 position;
-	float rotation;
+	Vector2 _position{};
+	float _rotation{};
 };

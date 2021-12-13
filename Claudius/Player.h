@@ -4,44 +4,51 @@
 #include "Color.h"
 #include "Rectangle.h"
 #include "KeyCode.h"
+#include <vector>
 
 struct RenderManager;
 
-struct Player
+struct Snake
 {
-	struct PlayerPart
+	static const int snakepart_size = 10;
+	static const int player_size = 50;
+	static const float starting_x;
+	static const float starting_y;
+	static const float movement_speed;
+	static const std::vector<Vector2> move_dir;
+
+	struct SnakePart
 	{
-		Transform trans;
-		Color color;
-		Rectangle rect;
+		SnakePart() = default;
+		SnakePart(Transform transform, Color color, Rectangle rect) noexcept :_transform(transform),_color(color),_rect(rect){}
+		Transform _transform;
+		Color _color;
+		Rectangle _rect;
 	};
 
-	//Static == belongs to the class, not the object of the class.
-	static const int player_size = 50;
-	PlayerPart parts[player_size];
+	enum class Direction
+	{
+		LEFT = 0,RIGHT = 1,UP = 2,DOWN = 3, NONE = 4
+	};
 	
-	Transform trans;
-	Color color;
+	Transform transform{};
+	Color color{};
 	Rectangle rect;
-	void OnKeyDown(KeyCode key);
-	void Initialize();
+	std::vector<SnakePart> snakeparts{};
+	std::vector<Vector2> bodyDiff{};
+	Direction direction{};
+
+	Snake() = default;
+	void OnKeyDown( KeyConfig::KeyCode key) noexcept;
+	void Initialize() noexcept;
 	void Render(RenderManager& renderManager);				// A reference or pointer doesn't need to be #include, just a forward declare.
-	void Update(double dt);
-	void ResetPlayer();
+	void Update() ;
+	void ResetPlayer() noexcept;
 
-	int size = 10;
-	const float movement_speed = 10.0f;
-	const float starting_x = 300.0f;
-	const float starting_y = 300.0f;
+	
+	
 
-	bool moving_right = false;
-	bool moving_left = false;
-	bool moving_up = false;
-	bool moving_down = false;
-	bool new_snake = false;
+	int snake_length = 0;
 
-	float x_array_difference[player_size] = {};
-	float y_array_difference[player_size] = {};
 
-	int player_score = 0;
 };

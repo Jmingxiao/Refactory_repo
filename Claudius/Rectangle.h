@@ -1,15 +1,14 @@
 #pragma once
 
-struct Rectangle
+typedef struct Rectangle
 {
-	int x{}; 
-	int y{};
-	int w{}; 
-	int h{};
+	int _x{}; 
+	int _y{};
+	int _w{}; 
+	int _h{};
 
-	Rectangle();
-	Rectangle(const Rectangle& rhs);
-	Rectangle(int x, int y, int w, int h);
+	Rectangle() = default;
+	Rectangle(int x, int y, int w, int h) noexcept;
 
-	void SetBounds(int x, int y, int w, int h);
-};
+	void SetBounds(int x, int y, int w, int h) noexcept;
+} Collider;

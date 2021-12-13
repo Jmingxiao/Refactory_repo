@@ -5,18 +5,18 @@
 #include "Color.h"
 #include "Transform.h"
 
-struct RenderManager; //<- Kinda like #include "RenderManager.h", not exactly. Can't use functions. Google forward declaration.
+//<- Kinda like #include "RenderManager.h", not exactly. Can't use functions. Google forward declaration.
 
 struct Apple
 {
 
-	Apple();
-	void Render(RenderManager& renderManager);
-	void Initialize(unsigned int width, unsigned int height);
+	Apple() = default;
+	void Render(struct RenderManager& renderManager);
+	void Initialize(int width, int height) noexcept;
 
-	Rectangle rect;
-	Color color;
-	Transform trans;
+	Collider rect{};
+	Color color{};
+	Transform trans{};
 
 	bool new_apple = false;
 };

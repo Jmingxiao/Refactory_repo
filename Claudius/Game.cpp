@@ -4,26 +4,27 @@
 #include "RenderManager.h"
 #include <iostream>
 
-Game::Game(ResourceManager& resourceManager) : m_resourceManager(resourceManager), width(1250), height(700)
+
+const int Game::width = 1250;
+const int Game::height = 700;
+const std::string Game::title = "snake";
+
+Game::Game(ResourceManager& resourceManager) noexcept : m_resourceManager(resourceManager)
 {
 	//Player test, moving two players to collide with each other.
-	playerOne.Initialize();
+	snake.Initialize();
 	apple.Initialize(10, 10);
 }
 
-Game::~Game()
-{
-}
+//bool Game::Enter(int& width, int& height, std::string& title)
+//{
+//	width = this->width;	//1250
+//	height = this->height;	// 700
+//	title = "Snake";
+//	return true;
+//}
 
-bool Game::Enter(int& width, int& height, std::string& title)
-{
-	width = this->width;	//1250
-	height = this->height;	// 700
-	title = "Snake";
-	return true;
-}
-
-void Game::Update(double dt)
+void Game::Update()
 {
 	// dt means delta time.
 	// timer += dt; <- check Game.h
@@ -33,48 +34,53 @@ void Game::Update(double dt)
 	// timer = 0.0f; or timer -= updateInterval;
 	//}
 
-	playerOne.Update(dt);
+	snake.Update();
 
 	// Player colliding on theirself.
-	for (int i = 0; i < playerOne.player_score; i++)
-	{
-		if (playerOne.trans.GetPosition() == playerOne.parts[i].trans.GetPosition())
-		{
-			playerOne.ResetPlayer();
-		}
+
+	const auto bodycolliding = [&](const auto& snakepart) noexcept {return snakepart._transform.GetPosition() == snake.transform.GetPosition(); };
+	if (std::find_if(snake.snakeparts.begin(), snake.snakeparts.begin() + snake.snake_length, bodycolliding) != snake.snakeparts.begin()+snake.snake_length) {
+		snake.ResetPlayer();
 	}
 
 	// Player going out of X bounds.
-	if (playerOne.trans.GetX() > width || playerOne.trans.GetX() < 0)
+	if (snake.transform.GetX() > width || snake.transform.GetX() < 0)
 	{
-		playerOne.ResetPlayer();
+		snake.ResetPlayer();
 	}
 
 	// Player going out of Y bounds.
-	if (playerOne.trans.GetY() > height || playerOne.trans.GetY() < 0)
+	if (snake.transform.GetY() > height || snake.transform.GetY() < 0)
 	{
-		playerOne.ResetPlayer();
+		snake.ResetPlayer();
 	}
 
 	// Player collide on apple.
-	if (playerOne.trans.GetPosition() == apple.trans.GetPosition())
+	if (snake.transform.GetPosition() == apple.trans.GetPosition())
 	{
-		playerOne.player_score++;
-		apple.trans.SetPosition((rand() % 125) * 10.0f, (rand() % 70) * 10.0f);
+		snake.snake_length++;
+		apple.trans.SetPosition(RandomPositionGenerator());
 	}
 }
 
 void Game::Render(RenderManager& renderManager)
 {
-	playerOne.Render(renderManager);
+	snake.Render(renderManager);
 	apple.Render(renderManager);
 }
 
-void Game::OnKeyDown(KeyCode key)
+void Game::OnKeyDown(KeyConfig::KeyCode key) noexcept
 {
-	playerOne.OnKeyDown(key);
+	using namespace KeyConfig;
+	snake.OnKeyDown(key);
 }
 
-void Game::OnKeyUp(KeyCode key)
+constexpr Vector2 Game::RandomPositionGenerator() const noexcept
 {
+	constexpr int offset = 10;
+	constexpr int randomwidth = 125 - offset*2;
+	constexpr int randomheight = 70 - offset*2;
+	constexpr float intance = 10.0f;
+	const auto result = Vector2((offset+(rand() % randomwidth)) * intance, (offset+(rand() % randomheight)) * intance);
+	return result;
 }

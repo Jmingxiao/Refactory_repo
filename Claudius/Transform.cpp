@@ -1,55 +1,48 @@
 #include "Transform.h"
 
-Transform::Transform() : position(), rotation(0.0f)
+
+
+
+Transform::Transform(float x, float y, float rotation) noexcept: _position(x,y), _rotation(rotation)
 {
 }
 
-Transform::Transform(const Transform& rhs) : position(rhs.position), rotation(rhs.rotation)
+void Transform::SetPosition(const Vector2& position) noexcept
 {
+	_position = position;
 }
 
-Transform::Transform(float x, float y, float rotation) : position(x,y), rotation(rotation)
+void Transform::ChangePosition(const Vector2& position) noexcept
 {
+	_position = _position+position;
 }
 
-void Transform::SetPosition(const float x, const float y)
+void Transform::SetRotation(const float rotation) noexcept
 {
-	position.x = x;
-	position.y = y;
+	_rotation = rotation;
 }
 
-void Transform::ChangePosition(const float x, const float y)
+void Transform::ChangeRotation(const float rotation) noexcept
 {
-	position.x += x;
-	position.y += y;
+	_rotation += rotation;
 }
 
-void Transform::SetRotation(const float rotation)
+Vector2 Transform::GetPosition() const noexcept
 {
-	this->rotation = rotation;
+	return _position;
 }
 
-void Transform::ChangeRotation(const float rotation)
+float Transform::GetX() const noexcept
 {
-	this->rotation += rotation;
+	return _position.x;
 }
 
-Vector2 Transform::GetPosition()
+float Transform::GetY() const noexcept
 {
-	return position;
+	return _position.y;
 }
 
-float Transform::GetX()
+constexpr float Transform::GetRotation() const noexcept
 {
-	return position.x;
-}
-
-float Transform::GetY()
-{
-	return position.y;
-}
-
-float Transform::GetRotation()
-{
-	return rotation;
+	return _rotation;
 }

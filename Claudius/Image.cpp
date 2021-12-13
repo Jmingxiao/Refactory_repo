@@ -1,28 +1,20 @@
 #include "Image.h"
 
-Image::Image() : id(-1), width(0), height(0)
+Image::Image(unsigned int id, int width, int height) noexcept : _id(id), _width(width), _height(height)
 {
 }
 
-Image::Image(const Image& rhs) : id(rhs.id), width(rhs.width), height(rhs.height)
+constexpr unsigned int Image::GetID() const noexcept
 {
+	return _id;
 }
 
-Image::Image(unsigned int id, int width, int height) : id(id), width(width), height(height)
+constexpr int Image::GetWidth() const noexcept
 {
+	return _width;
 }
 
-unsigned int Image::GetID()
+constexpr int Image::GetHeight() const noexcept
 {
-	return id;
-}
-
-int Image::GetWidth()
-{
-	return width;
-}
-
-int Image::GetHeight()
-{
-	return height;
+	return _height;
 }
