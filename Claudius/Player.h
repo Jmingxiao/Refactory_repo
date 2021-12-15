@@ -36,7 +36,7 @@ struct Snake
 	Rectangle rect;
 	std::vector<SnakePart> snakeparts{};
 	std::vector<Vector2> bodyDiff{};
-	Direction direction{};
+	Direction direction{Direction::NONE};
 
 	Snake() = default;
 	void OnKeyDown( KeyConfig::KeyCode key) noexcept;

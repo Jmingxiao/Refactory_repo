@@ -9,31 +9,17 @@ const int Game::width = 1250;
 const int Game::height = 700;
 const std::string Game::title = "snake";
 
-Game::Game(ResourceManager& resourceManager) noexcept : m_resourceManager(resourceManager)
+Game::Game() noexcept
 {
 	//Player test, moving two players to collide with each other.
 	snake.Initialize();
 	apple.Initialize(10, 10);
 }
 
-//bool Game::Enter(int& width, int& height, std::string& title)
-//{
-//	width = this->width;	//1250
-//	height = this->height;	// 700
-//	title = "Snake";
-//	return true;
-//}
+
 
 void Game::Update()
 {
-	// dt means delta time.
-	// timer += dt; <- check Game.h
-	// if (timer > updateInterval)
-	//{
-	// update snake movement
-	// timer = 0.0f; or timer -= updateInterval;
-	//}
-
 	snake.Update();
 
 	// Player colliding on theirself.
@@ -44,13 +30,8 @@ void Game::Update()
 	}
 
 	// Player going out of X bounds.
-	if (snake.transform.GetX() > width || snake.transform.GetX() < 0)
-	{
-		snake.ResetPlayer();
-	}
-
-	// Player going out of Y bounds.
-	if (snake.transform.GetY() > height || snake.transform.GetY() < 0)
+	if (snake.transform.GetX() > width || snake.transform.GetX() < 0||
+		snake.transform.GetY() > height || snake.transform.GetY() < 0)
 	{
 		snake.ResetPlayer();
 	}

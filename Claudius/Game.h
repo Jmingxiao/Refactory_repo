@@ -14,15 +14,13 @@ class Game
 	Snake snake;
 	Apple apple;
 
-	ResourceManager& m_resourceManager;
-
 public:
 
 	static const int width;
 	static const int height;
 	static const std::string title;
 
-	Game(ResourceManager& resourceManager) noexcept;
+	Game() noexcept;
 	//bool Enter(int& width, int& height, std::string& title);
 	void Update();
 	void Render(RenderManager& rendererManager);

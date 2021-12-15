@@ -4,17 +4,32 @@ Image::Image(unsigned int id, int width, int height) noexcept : _id(id), _width(
 {
 }
 
-constexpr unsigned int Image::GetID() const noexcept
+const void Image::SetID(const unsigned int id) noexcept
+{
+	_id = id;
+}
+
+constexpr void Image::SetWidth(const int width) noexcept
+{
+	_width = width;
+}
+
+constexpr void Image::SetHeight(const int height) noexcept
+{
+	_height	= height;
+}
+
+const unsigned int Image::GetID() const noexcept
 {
 	return _id;
 }
 
-constexpr int Image::GetWidth() const noexcept
+const int Image::GetWidth() const noexcept
 {
 	return _width;
 }
 
-constexpr int Image::GetHeight() const noexcept
+ const int Image::GetHeight() const noexcept
 {
 	return _height;
 }
