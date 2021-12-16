@@ -50,8 +50,8 @@ int main()
 			if (entry.sprite._image != nullptr)
 			{
 				SDL_Rect src{ entry.sprite.source._x, entry.sprite.source._y, entry.sprite.source._w, entry.sprite.source._h };
-				SDL_Rect dst{ static_cast<int>(entry.trans._position.x),
-							  static_cast<int>(entry.trans._position.y),
+				SDL_Rect dst{ static_cast<int>(entry.transform.GetPosition().x),
+							  static_cast<int>(entry.transform.GetPosition().y),
 							  entry.sprite._image->GetWidth(),
 							  entry.sprite._image->GetHeight()};
 				SDL_RenderCopy(config.GetRenderer(), resourceManager.GetTexture(entry.sprite._image->GetID()), &src, &dst);
@@ -59,8 +59,8 @@ int main()
 			else
 			{
 				SDL_SetRenderDrawColor(config.GetRenderer(), entry.sprite.color._r, entry.sprite.color._g, entry.sprite.color._b, entry.sprite.color._a);
-				SDL_Rect rect{ static_cast<int>(entry.trans._position.x),
-							   static_cast<int>(entry.trans._position.y),
+				SDL_Rect rect{ static_cast<int>(entry.transform.GetPosition().x),
+							   static_cast<int>(entry.transform.GetPosition().y),
 							   entry.sprite.source._w,
 							   entry.sprite.source._h };
 				SDL_RenderDrawRect(config.GetRenderer(), &rect);
@@ -69,8 +69,8 @@ int main()
 		for (auto&& entry : renderManager.rectEntries)
 		{
 			SDL_SetRenderDrawColor(config.GetRenderer(), entry.color._r, entry.color._g, entry.color._b, entry.color._a);
-			SDL_Rect rect{ static_cast<int>(entry.trans._position.x),
-						   static_cast<int>(entry.trans._position.y),
+			SDL_Rect rect{ static_cast<int>(entry.transform.GetPosition().x),
+						   static_cast<int>(entry.transform.GetPosition().y),
 						   entry.rect._w,
 						   entry.rect._h };
 			//SDL_RenderDrawRect(renderer, &rect);	// <- If you want to draw the "outline" of the rectangle.

@@ -22,7 +22,7 @@ public:
 
 	Game() noexcept;
 	//bool Enter(int& width, int& height, std::string& title);
-	void Update();
+	void Update() noexcept;
 	void Render(RenderManager& rendererManager);
 	void OnKeyDown(KeyConfig::KeyCode key) noexcept;
 

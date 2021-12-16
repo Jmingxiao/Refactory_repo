@@ -18,29 +18,26 @@ Game::Game() noexcept
 
 
 
-void Game::Update()
+void Game::Update() noexcept
 {
 	snake.Update();
 
 	// Player colliding on theirself.
-
-	const auto bodycolliding = [&](const auto& snakepart) noexcept {return snakepart._transform.GetPosition() == snake.transform.GetPosition(); };
-	if (std::find_if(snake.snakeparts.begin(), snake.snakeparts.begin() + snake.snake_length, bodycolliding) != snake.snakeparts.begin()+snake.snake_length) {
+	if (snake.CheckBodyCollision()) {
 		snake.ResetPlayer();
 	}
 
-	// Player going out of X bounds.
-	if (snake.transform.GetX() > width || snake.transform.GetX() < 0||
-		snake.transform.GetY() > height || snake.transform.GetY() < 0)
+	// Player going out of bounds.
+	if (snake.CheckOutSideBound(width,height))
 	{
 		snake.ResetPlayer();
 	}
 
 	// Player collide on apple.
-	if (snake.transform.GetPosition() == apple.trans.GetPosition())
+	if (snake.transform.GetPosition() == apple.transform.GetPosition())
 	{
-		snake.snake_length++;
-		apple.trans.SetPosition(RandomPositionGenerator());
+		snake.Score();
+		apple.transform.SetPosition(RandomPositionGenerator());
 	}
 }
 

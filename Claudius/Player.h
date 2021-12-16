@@ -30,25 +30,29 @@ struct Snake
 	{
 		LEFT = 0,RIGHT = 1,UP = 2,DOWN = 3, NONE = 4
 	};
-	
-	Transform transform{};
+
+private:
+
 	Color color{};
 	Rectangle rect;
-	std::vector<SnakePart> snakeparts{};
+	int snake_length{};
 	std::vector<Vector2> bodyDiff{};
+	std::vector<SnakePart> snakeparts{};
 	Direction direction{Direction::NONE};
+
+public:
+	Transform transform{};
+
 
 	Snake() = default;
 	void OnKeyDown( KeyConfig::KeyCode key) noexcept;
 	void Initialize() noexcept;
-	void Render(RenderManager& renderManager);				// A reference or pointer doesn't need to be #include, just a forward declare.
-	void Update() ;
+	void Render(RenderManager& renderManager);				
+	void Update() noexcept ;
 	void ResetPlayer() noexcept;
-
-	
-	
-
-	int snake_length = 0;
-
+	void Score() noexcept;
+	const int GetSnakeLength() const noexcept;
+	const bool CheckBodyCollision() const noexcept;
+	const bool CheckOutSideBound(const int width, const int height) const noexcept;
 
 };

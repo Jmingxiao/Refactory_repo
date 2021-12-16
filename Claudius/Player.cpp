@@ -21,7 +21,7 @@ void Snake::Initialize() noexcept
 	
 }
 
-void Snake::Render(RenderManager& renderManager)
+void Snake::Render(RenderManager& renderManager) 
 {
 	renderManager.Render(rect, color, transform);
 
@@ -29,7 +29,7 @@ void Snake::Render(RenderManager& renderManager)
 		[&](const auto& snakepart) {renderManager.Render(snakepart._rect, snakepart._color, snakepart._transform); });
 }
 
-void Snake::Update()
+void Snake::Update() noexcept
 {
 	bodyDiff.front() = transform.GetPosition() - snakeparts.front()._transform.GetPosition();
 
@@ -79,4 +79,26 @@ void Snake::ResetPlayer() noexcept
 	direction = Direction::NONE;
 
 	transform.SetPosition({ starting_x, starting_y });
+}
+
+void Snake::Score() noexcept
+{
+	snake_length++;
+}
+
+const int Snake::GetSnakeLength() const noexcept
+{
+	return snake_length;
+}
+
+const bool Snake::CheckBodyCollision() const noexcept
+{
+	const auto bodycolliding = [&](const auto& snakepart)constexpr noexcept {return snakepart._transform.GetPosition() == transform.GetPosition(); };
+	auto snakend = snakeparts.cbegin() + snake_length;
+	return std::find_if(snakeparts.cbegin(), snakend, bodycolliding) != snakend;
+}
+
+const bool Snake::CheckOutSideBound(const int width, const int height ) const noexcept
+{
+	return  transform.GetX() > width || transform.GetX() < 0 || transform.GetY() > height || transform.GetY() < 0;
 }

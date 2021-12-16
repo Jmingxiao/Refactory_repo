@@ -17,6 +17,7 @@ struct Transform
 	float GetY() const noexcept;
 	constexpr float GetRotation() const noexcept;
 
+private:
 	Vector2 _position{};
 	float _rotation{};
 };

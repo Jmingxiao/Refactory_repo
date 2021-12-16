@@ -13,10 +13,10 @@ struct Apple
 	Apple() = default;
 	void Render(struct RenderManager& renderManager);
 	void Initialize(int width, int height) noexcept;
-
-	Collider rect{};
-	Color color{};
-	Transform trans{};
+	Transform transform{};
 
 	bool new_apple = false;
+private:
+	Rectangle rect{};
+	Color color{};
 };

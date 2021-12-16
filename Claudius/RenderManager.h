@@ -12,14 +12,14 @@ struct RenderManager
 	struct SpriteEntry
 	{
 		const Sprite& sprite;
-		const Transform& trans;
+		const Transform& transform;
 	};
 
 	struct RectEntry
 	{
 		const Rectangle& rect;
 		const Color& color;
-		const Transform& trans;
+		const Transform& transform;
 	};
 
 
