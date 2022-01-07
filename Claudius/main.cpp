@@ -23,8 +23,8 @@ void PollEvent(Game& game) noexcept
 
 int main()
 {
-	SDLSystem config{};
-	config.SetWindow();
+	SDLSystem config(SDL_INIT_EVERYTHING);
+	config.SetWindowConfig();
 	
 	RenderManager renderManager{};
 	Game game{};

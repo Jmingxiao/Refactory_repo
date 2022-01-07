@@ -76,7 +76,7 @@ float Vector2::cross(const Vector2& rhs) const noexcept
 
 void Vector2::normalize() noexcept
 {
-	 const float len = length(); 
+	const float len = length(); 
 	x /= len; 
 	y /= len;
 }

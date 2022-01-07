@@ -1,2 +1,0 @@
-C:\Users\jmx\Desktop\Refactory_repo\Build\x64\Debug\Claudius.exe.lastcodeanalysissucceeded
-C:\Users\jmx\Desktop\Refactory_repo\Claudius\x64\Debug\NativeCodeAnalysis.read.1.tlog

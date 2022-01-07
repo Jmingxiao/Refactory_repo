@@ -25,15 +25,15 @@ private:
 	using window_ptr = std::unique_ptr<SDL_Window, Deleter>;
 	using renderer_ptr = std::unique_ptr<SDL_Renderer, Deleter>;
 
-	std::unique_ptr<SDL_Window, Deleter> window = nullptr;
-	std::unique_ptr<SDL_Renderer, Deleter>  renderer = nullptr;
+	window_ptr window = nullptr;
+	renderer_ptr  renderer = nullptr;
 
 
 public:
-	
-	SDLSystem() {
-		SDL_Init(SDL_INIT_EVERYTHING);
-		window = { SDL_CreateWindow("Base", 0, 0, 0, 0, SDL_WindowFlags::SDL_WINDOW_RESIZABLE),Deleter() };
+	SDLSystem() = default;
+	SDLSystem(const unsigned int flag) {
+		SDL_Init(flag);
+		window = { SDL_CreateWindow("Base", 0, 0, 0, 0, SDL_WindowFlags::SDL_WINDOW_RESIZABLE),Deleter()};
 		if (window == nullptr) {
 			throw std::runtime_error(SDL_GetError());
 		}
@@ -42,7 +42,8 @@ public:
 			throw std::runtime_error(SDL_GetError());
 		}
 	}
-	void SetWindow() noexcept {
+
+	void SetWindowConfig() noexcept {
 		SDL_SetWindowSize(GetWindow(), ConstValues::SCR_Width,ConstValues::SCR_Height);
 		SDL_SetWindowTitle(GetWindow(), ConstValues::title.c_str());
 		SDL_SetWindowPosition(GetWindow(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
