@@ -1,32 +1,30 @@
 #pragma once
 
-#include <vector>
+#pragma once
+#include <CodeAnalysis/Warnings.h>
+#pragma warning(push)
+#pragma warning (disable:ALL_CODE_ANALYSIS_WARNINGS)
+#include "SDL.h"
+#pragma warning(pop)
 
-struct Sprite;
-struct Transform;
-struct Rectangle;
-struct Color;
+#include <vector>
+#include "Color.h"
+#include "Rectangle.h"
+#include "Transform.h"
+
 
 struct RenderManager
 {
-	struct SpriteEntry
-	{
-		const Sprite& sprite;
-		const Transform& transform;
-	};
-
 	struct RectEntry
 	{
-		const Rectangle& rect;
-		const Color& color;
-		const Transform& transform;
+		const Rectangle rect;
+		const Color color;
+		const Transform transform;
 	};
 
-
-	void Render(const Sprite& sprite, const Transform& trans);
 	void Render(const Rectangle& rect, const Color& color, const Transform& trans);
+	void Rendering(SDL_Renderer* renderer) noexcept;
 	void Clear() noexcept;
 
-	std::vector<SpriteEntry> spriteEntries;
 	std::vector<RectEntry> rectEntries;
 };

@@ -3,7 +3,7 @@
 
 
 
-Transform::Transform(float x, float y, float rotation) noexcept: _position(x,y), _rotation(rotation)
+Transform::Transform(float x, float y) noexcept: _position(x,y)
 {
 }
 
@@ -17,15 +17,6 @@ void Transform::ChangePosition(const Vector2& position) noexcept
 	_position = _position+position;
 }
 
-void Transform::SetRotation(const float rotation) noexcept
-{
-	_rotation = rotation;
-}
-
-void Transform::ChangeRotation(const float rotation) noexcept
-{
-	_rotation += rotation;
-}
 
 Vector2 Transform::GetPosition() const noexcept
 {
@@ -42,7 +33,4 @@ float Transform::GetY() const noexcept
 	return _position.y;
 }
 
-constexpr float Transform::GetRotation() const noexcept
-{
-	return _rotation;
-}
+

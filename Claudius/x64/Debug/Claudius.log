@@ -1,0 +1,9 @@
+﻿  Apple.cpp
+  Game.cpp
+  Player.cpp
+  RenderManager.cpp
+  main.cpp
+  Running Code Analysis for C/C++...
+  Generating Code...
+  Claudius.vcxproj -> C:\Users\jmx\Desktop\Refactory_repo\Build\x64\Debug\Claudius.exe
+C:\Users\jmx\Desktop\Refactory_repo\Claudius\SDLSystem.h(34): warning C26455: Default constructor may not throw. Declare it 'noexcept' (f.6).

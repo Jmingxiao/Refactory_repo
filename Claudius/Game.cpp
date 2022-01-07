@@ -1,43 +1,29 @@
-// 2019-12-05 Teemu Laiho
-
 #include "Game.h"
 #include "RenderManager.h"
 #include <iostream>
+#include "ConstValue.h"
 
-
-const int Game::width = 1250;
-const int Game::height = 700;
-const std::string Game::title = "snake";
-
-Game::Game() noexcept
-{
-	//Player test, moving two players to collide with each other.
-	snake.Initialize();
-	apple.Initialize(10, 10);
-}
-
-
+bool Game::running = true;
 
 void Game::Update() noexcept
 {
 	snake.Update();
 
-	// Player colliding on theirself.
+
 	if (snake.CheckBodyCollision()) {
 		snake.ResetPlayer();
 	}
 
-	// Player going out of bounds.
-	if (snake.CheckOutSideBound(width,height))
+
+	if (snake.CheckOutSideBound(ConstValues::SCR_Width,ConstValues::SCR_Height))
 	{
 		snake.ResetPlayer();
 	}
 
-	// Player collide on apple.
-	if (snake.transform.GetPosition() == apple.transform.GetPosition())
+	if (snake.GetSnakeTransform().GetPosition() == apple.Gettransform().GetPosition())
 	{
 		snake.Score();
-		apple.transform.SetPosition(RandomPositionGenerator());
+		apple.SetPosition(RandomPositionGenerator());
 	}
 }
 

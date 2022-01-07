@@ -1,0 +1,498 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.29.30137.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "commandLine": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX86\\x64\\c1xx.dll\" -ACf{1F7B090C-16DB-4822-966A-A93D26ED4681} -ACpmspft140.dll -Alint -D_PREFAST_ -D_AST_FE_ -Analyze -zm0x00D5C1B0 -il C:\\Users\\jmx\\AppData\\Local\\Temp\\_CL_4e34c285ast -typedil -f RenderManager.cpp -Ze -D_MSC_EXTENSIONS -Zp16 -pc \\:/ -D_MSC_VER=1929 -D_MSC_FULL_VER=192930137 -D_MSC_BUILD=0 -D_M_AMD64=100 -ZILP448 -D_M_X64=100 -D_WIN64 -D_WIN32 -GR -D_CPPRTTI -I C:\\Users\\jmx\\Desktop\\Refactory_repo\\External\\SDL2\\include -nologo -W 4 -WX -diagnostics:column -D_GUARDOVERFLOW_CRT_ALLOCATORS=1 -Ot -DCODE_ANALYSIS -D_MBCS -EHs -D_CPPUNWIND -EHc -D__MSVC_RUNTIME_CHECKS -RTCs -RTCu -MDd -D_DEBUG -D_MT -D_DLL -GS -D_M_FP_PRECISE -permissive- -Zc:wchar_t -Zc:forScope -std:c++20 -Fox64\\Debug\\RenderManager.obj -Fdx64\\Debug\\vc142.pdb -external:W 4 -Gd -analyze:projectdirectory C:\\Users\\jmx\\Desktop\\Refactory_repo\\Claudius -analyze:rulesetdirectory ;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Team Tools\\Static Analysis Tools\\\\Rule Sets; -analyze:ruleset C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Team Tools\\Static Analysis Tools\\Rule Sets\\CppCoreCheckRules.ruleset -analyze:quiet -analyze:plugin C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX86\\x86\\EspXEngine.dll -FC -errorreport:prompt -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\VS\\include -I D:\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I D:\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I D:\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I D:\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I D:\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\Include\\um -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\include -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\VS\\include -external:I D:\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I D:\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -external:I D:\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I D:\\Windows Kits\\10\\Include\\10.0.19041.0\\um -external:I D:\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I D:\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -external:I D:\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I D:\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -external:I D:\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I D:\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -external:I C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\Include\\um -I C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\Include\\um",
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/Users/jmx/Desktop/Refactory_repo/Claudius/SDLSystem.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "7b930bc64c4c1afe1cfbcd3f7093fa90"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/claudius/main.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "5e37e718062317f063148e6ab73bc140"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/claudius/rendermanager.h"
+          },
+          "hashes": {
+            "md5": "0ef60a6647bb3a29a0a7b3d509c92036"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl.h"
+          },
+          "hashes": {
+            "md5": "3f55c040da1a69ae201fa184bebeea99"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_main.h"
+          },
+          "hashes": {
+            "md5": "0a79027d63346cb44bef0c8de3d37d54"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_stdinc.h"
+          },
+          "hashes": {
+            "md5": "a1ff68bd34e8ab5c832f7c777d247eb0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_config.h"
+          },
+          "hashes": {
+            "md5": "da465f8bfe25475fc2cb906e03fe9b62"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_platform.h"
+          },
+          "hashes": {
+            "md5": "16ed35243597281333bfd659f3529e9a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/begin_code.h"
+          },
+          "hashes": {
+            "md5": "3c605cf4c18094bad63707b22ed076c7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/close_code.h"
+          },
+          "hashes": {
+            "md5": "4b147c4e3a6a6d05d0e81a658ec0d82a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_assert.h"
+          },
+          "hashes": {
+            "md5": "701be8ef6718c0f6843aadf0d6c846eb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_atomic.h"
+          },
+          "hashes": {
+            "md5": "c40de0c18cd2b52735a9340639f95c66"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_audio.h"
+          },
+          "hashes": {
+            "md5": "7063e44a0db5f9533cef7f201910620c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_error.h"
+          },
+          "hashes": {
+            "md5": "75644db558ce33b8d9f006f241709125"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_endian.h"
+          },
+          "hashes": {
+            "md5": "d428ca9213f7f3fadf13653dcfeb1f75"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_mutex.h"
+          },
+          "hashes": {
+            "md5": "7a1aee12499aaf2356827da27fd1eb20"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_thread.h"
+          },
+          "hashes": {
+            "md5": "b31b28ee7c843126bd2d4651cd348044"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_rwops.h"
+          },
+          "hashes": {
+            "md5": "600da45f2f3e3125174d8cdc2b11e138"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_clipboard.h"
+          },
+          "hashes": {
+            "md5": "05e75cc05a01a3f45114727c9c371b86"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_cpuinfo.h"
+          },
+          "hashes": {
+            "md5": "ec5cbc8b0bd9744a3ff2cacc69f4345a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_events.h"
+          },
+          "hashes": {
+            "md5": "863fa6ce617e31cd609ccac504cb8688"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_video.h"
+          },
+          "hashes": {
+            "md5": "a68a5013c6403d0e4ba45ce3fd6977cf"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_pixels.h"
+          },
+          "hashes": {
+            "md5": "6d98357eb4c4b22b7cc317d8a62e26a7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_rect.h"
+          },
+          "hashes": {
+            "md5": "010be0a51fc3bb2533ced5e6107c4bc5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_surface.h"
+          },
+          "hashes": {
+            "md5": "3c89e6fd6a85092ec7d36dc9f843d3f9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_blendmode.h"
+          },
+          "hashes": {
+            "md5": "dbc94e5bfb8b1aaf3c3e954cd35e7df3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_keyboard.h"
+          },
+          "hashes": {
+            "md5": "2399613e0a9eac734039dc6c5d3b14de"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_keycode.h"
+          },
+          "hashes": {
+            "md5": "e5b96836be82f801d571c8f39b7d1670"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_scancode.h"
+          },
+          "hashes": {
+            "md5": "5dc6d1f8da5f05ca3a6ac8bb011fd544"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_mouse.h"
+          },
+          "hashes": {
+            "md5": "7a613c78f18ff2e5596de94eff50489f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_joystick.h"
+          },
+          "hashes": {
+            "md5": "c7103ee6855a2abcc47501fe6561d643"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_gamecontroller.h"
+          },
+          "hashes": {
+            "md5": "27fd7b115a3a1ae7fe801d75d7ef556d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_quit.h"
+          },
+          "hashes": {
+            "md5": "9f7ff46e99a00908885caec380cacffe"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_gesture.h"
+          },
+          "hashes": {
+            "md5": "55cf690f9f1121ff76c11f864de70fe1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_touch.h"
+          },
+          "hashes": {
+            "md5": "74017265ea0ad814cef9e979fcce8c7a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_filesystem.h"
+          },
+          "hashes": {
+            "md5": "99b3198b358abceb17e7a0812b8f59e3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_haptic.h"
+          },
+          "hashes": {
+            "md5": "39ebfbccd5ba7a083138abbe98ca0ab9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_hints.h"
+          },
+          "hashes": {
+            "md5": "db05abe3ef526f82a11eaa55369b30e3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_loadso.h"
+          },
+          "hashes": {
+            "md5": "b29c2d0869e1ae08a2e7981c8fb805ef"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_log.h"
+          },
+          "hashes": {
+            "md5": "94379fdabe1b57c660017e84032c301a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_messagebox.h"
+          },
+          "hashes": {
+            "md5": "c8a305930f71529610cec127a92c6fb2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_power.h"
+          },
+          "hashes": {
+            "md5": "351fb6df00bf5de74c2efc444e1e7f8f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_render.h"
+          },
+          "hashes": {
+            "md5": "af7a16e6b468e2f9c32d7ff031ec9456"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_sensor.h"
+          },
+          "hashes": {
+            "md5": "f1bdd638f653ac833cd6f8f442688905"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_shape.h"
+          },
+          "hashes": {
+            "md5": "a1f7ab547558f3bf3e544f0310777f0c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_system.h"
+          },
+          "hashes": {
+            "md5": "4057c1d9baf02d99da1690b690635604"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_timer.h"
+          },
+          "hashes": {
+            "md5": "3b32d166c66c3ff18ea24f1f26bbf26b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/external/sdl2/include/sdl_version.h"
+          },
+          "hashes": {
+            "md5": "428c422bcfe93b9370eec2cb7c0a04fc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/claudius/color.h"
+          },
+          "hashes": {
+            "md5": "f42f0e19bce8a0b2717835346af885ef"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/claudius/rectangle.h"
+          },
+          "hashes": {
+            "md5": "aa22c6e5992677c8d9ceaaf90b767a88"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/claudius/transform.h"
+          },
+          "hashes": {
+            "md5": "e99a44abf7cbf003bbe285bc0f53fd09"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/claudius/vector2.h"
+          },
+          "hashes": {
+            "md5": "271280a934815017c3f3b65631ed95c6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/claudius/game.h"
+          },
+          "hashes": {
+            "md5": "d96fb379a246f31eaf7e74aef38fdf7b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/claudius/keycode.h"
+          },
+          "hashes": {
+            "md5": "ec26b9cca4d2ccc536629fb02c6b59ff"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/claudius/apple.h"
+          },
+          "hashes": {
+            "md5": "8f44c3c9b710f2c73959fd03993ccc9f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/claudius/player.h"
+          },
+          "hashes": {
+            "md5": "b504cc85238ffd46cb01aa5f1c61cef3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/claudius/constvalue.h"
+          },
+          "hashes": {
+            "md5": "b427f6323e73004fb5ad4c65defc16d8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/jmx/desktop/refactory_repo/claudius/rendermanager.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "4a0052facbc59c458a3025ad7a2288e4"
+          }
+        }
+      ]
+    }
+  ]
+}

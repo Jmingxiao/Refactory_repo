@@ -1,22 +1,24 @@
 #pragma once
 
-#include "KeyCode.h"
 #include "Rectangle.h"
 #include "Color.h"
 #include "Transform.h"
 
-//<- Kinda like #include "RenderManager.h", not exactly. Can't use functions. Google forward declaration.
+struct RenderManager;
 
-struct Apple
+class Apple
 {
+public:
+	bool new_apple = false;
 
 	Apple() = default;
-	void Render(struct RenderManager& renderManager);
-	void Initialize(int width, int height) noexcept;
-	Transform transform{};
+	Apple(const Rectangle& r, const Color& c, const Transform& t) noexcept;
+	void Render( RenderManager& renderManager);
+	void SetPosition(const Vector2&) noexcept;
+	const Transform& Gettransform()const noexcept;
 
-	bool new_apple = false;
 private:
-	Rectangle rect{};
-	Color color{};
+	Rectangle rect{0,0,10,10};
+	Color color{Color::Red()};
+	Transform transform{100,100};
 };

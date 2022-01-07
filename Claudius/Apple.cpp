@@ -5,15 +5,22 @@
 #include "RenderManager.h"
 
 
-void Apple::Initialize(int width, int height) noexcept
+Apple::Apple(const Rectangle& r, const Color& c, const Transform& t) noexcept : rect(r),color(c),transform(t)
 {
-	color.SetColor(0, 255, 0, 0);
-	rect.SetBounds(0, 0, width, height);
-	transform.SetPosition({100,200});
 }
 
 void Apple::Render(RenderManager& renderManager) {
 	renderManager.Render(rect, color, transform);
+}
+
+void Apple::SetPosition(const Vector2& pos) noexcept
+{
+	transform.SetPosition(pos);
+}
+
+const Transform& Apple::Gettransform() const noexcept
+{
+	return transform;
 }
 
 
