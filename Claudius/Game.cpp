@@ -3,48 +3,42 @@
 #include <iostream>
 #include "ConstValue.h"
 
-bool Game::running = true;
-
 void Game::Update() noexcept
 {
 	snake.Update();
-
-
 	if (snake.CheckBodyCollision()) {
 		snake.ResetPlayer();
+		return;
 	}
 
-
-	if (snake.CheckOutSideBound(ConstValues::SCR_Width,ConstValues::SCR_Height))
+	if (snake.CheckOutSideBound(Consts::SCR_Width,Consts::SCR_Height))
 	{
 		snake.ResetPlayer();
+		return;
 	}
 
-	if (snake.GetSnakeTransform().GetPosition() == apple.Gettransform().GetPosition())
+	if (snake.Gettransform() == apple)
 	{
 		snake.Score();
-		apple.SetPosition(RandomPositionGenerator());
+		apple = RandomPositionGenerator();
 	}
 }
 
 void Game::Render(RenderManager& renderManager)
 {
 	snake.Render(renderManager);
-	apple.Render(renderManager);
+	renderManager.Render({ 0,0,Consts::appleSize,Consts::appleSize }, Consts::appleColor, apple);
 }
 
-void Game::OnKeyDown(KeyConfig::KeyCode key) noexcept
+void Game::OnKeyDown(KeyCode key) noexcept
 {
-	using namespace KeyConfig;
 	snake.OnKeyDown(key);
 }
 
-constexpr Vector2 Game::RandomPositionGenerator() const noexcept
+Vector2 Game::RandomPositionGenerator() const noexcept
 {
-	constexpr int offset = 10;
-	constexpr int randomwidth = 125 - offset*2;
-	constexpr int randomheight = 70 - offset*2;
-	constexpr float intance = 10.0f;
-	const auto result = Vector2((offset+(rand() % randomwidth)) * intance, (offset+(rand() % randomheight)) * intance);
-	return result;
+	constexpr float offset = 10.0f;
+	const float newPosX = (rand() % 100) * offset;
+	const float newPosY = (rand() % 70) * offset;
+	return { newPosX, newPosY };
 }

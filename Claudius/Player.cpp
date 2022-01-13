@@ -5,91 +5,72 @@
 #include <utility>
 #include <algorithm>
 
-const float Snake::movement_speed = 10.0f;
-const float Snake::starting_x = 300.0f;
-const float Snake::starting_y = 300.0f;
-const std::vector<Vector2> Snake::move_dir = { Vector2(-1,0),Vector2(1,0),Vector2(0,-1),Vector2(0,1), Vector2(0,0)};
 
-
-Snake::Snake() noexcept
-{
-	rect.SetBounds(0, 0, snakepart_size, snakepart_size);
-	transform.SetPosition({ starting_x, starting_y });
-	snakeparts = std::move(std::vector<SnakePart>(player_size, SnakePart(transform, Color::Blue(), rect)));
-}
 void Snake::Render(RenderManager& renderManager) 
 {
 	renderManager.Render(rect, color, transform);
-	std::for_each(snakeparts.begin(), snakeparts.begin() + snake_length,
-		[&](const auto& snakepart) {renderManager.Render(snakepart._rect, snakepart._color, snakepart._transform); });
+	for (auto part : snakeparts) {
+		renderManager.Render(rect, color, part);
+	}
 }
 
 void Snake::Update() noexcept
 {
-	const auto headdiff = transform.GetPosition() - snakeparts.front()._transform.GetPosition();
-	const Vector2 speed(movement_speed, movement_speed);
-	transform.ChangePosition(speed * move_dir.at(static_cast<size_t>(direction)));
-	snakeparts.front()._transform.ChangePosition(headdiff);
+	const auto headdiff = transform - snakeparts.front();
+	const Vector2 speed(Consts::snakeSpeed,Consts::snakeSpeed);
+	transform += speed * direction;
+	snakeparts.front() += headdiff ;
 	std::shift_right(snakeparts.begin(), snakeparts.end(), 1);
-
 }
 
-
-void Snake::OnKeyDown(KeyConfig::KeyCode key) noexcept
+void Snake::OnKeyDown(KeyCode key) noexcept
 {
-	using namespace KeyConfig;
 	switch (key)
 	{
-	case KeyCode::LEFT_ARROW :
-		direction = Direction::LEFT;
+	case KeyCode::LEFT_ARROW:
+		direction = Consts::Left;
 		break;
 	case KeyCode::RIGHT_ARROW:
-		direction = Direction::RIGHT;
+		direction = Consts::Right;
 		break;
 	case KeyCode::UP_ARROW:
-		direction = Direction::UP;
+		direction = Consts::Up;
 		break;
 	case KeyCode::DOWN_ARROW:
-		direction = Direction::DOWN;
+		direction = Consts::Down;
 		break;
 	default: 
-		direction = Direction::NONE;
+		direction ={};
 		break;
 	}
 }
 
 void Snake::ResetPlayer() noexcept
 {
-	snake_length = 0;
-	direction = Direction::NONE;
-	transform.SetPosition({ starting_x, starting_y });
+	snakeparts.clear();
+	snakeparts.push_back(transform);
+	direction = {};
+	transform = Consts::startposition;
 }
 
 void Snake::Score() noexcept
 {
-	if (snake_length < player_size) {
-		snake_length++;
+	if (snakeparts.size() < Consts::snakeMaxLength) {
+		snakeparts.push_back(transform+direction*Consts::snakepartoffset);
 	}
 }
 
-int Snake::GetSnakeLength() const noexcept
+ bool Snake::CheckBodyCollision() const noexcept
 {
-	return snake_length;
-}
-
-bool Snake::CheckBodyCollision() const noexcept
-{
-	const auto bodycolliding = [&](const auto& snakepart)constexpr noexcept {return snakepart._transform.GetPosition() == transform.GetPosition(); };
-	auto snakend = snakeparts.cbegin() + snake_length;
-	return std::find_if(snakeparts.cbegin(), snakend, bodycolliding) != snakend;
+	return find(snakeparts.cbegin(),snakeparts.cend(),transform)!=snakeparts.cend();
 }
 
 bool Snake::CheckOutSideBound(const int width, const int height ) const noexcept
 {
-	return  transform.GetX() > width || transform.GetX() < 0 || transform.GetY() > height || transform.GetY() < 0;
+	return  transform.x > width || transform.x < 0 || transform.y > height || transform.y < 0;
 }
 
-const Transform& Snake::GetSnakeTransform() noexcept
+const Vector2& Snake::Gettransform() const noexcept
 {
 	return transform;
 }

@@ -160,17 +160,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Apple.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="RenderManager.cpp" />
-    <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Apple.h" />
     <ClInclude Include="ConstValue.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Color.h" />
@@ -179,7 +175,6 @@
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="RenderManager.h" />
     <ClInclude Include="SDLSystem.h" />
-    <ClInclude Include="Transform.h" />
     <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

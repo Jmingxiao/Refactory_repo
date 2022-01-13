@@ -20,40 +20,27 @@ struct Deleter
 	}
 };
 
-class SDLSystem {
+class SDLWindow {
 private:
 	using window_ptr = std::unique_ptr<SDL_Window, Deleter>;
-	using renderer_ptr = std::unique_ptr<SDL_Renderer, Deleter>;
-
-	window_ptr window = nullptr;
-	renderer_ptr  renderer = nullptr;
-
-
+	window_ptr window;
 public:
-	SDLSystem() = default;
-	SDLSystem(const unsigned int flag) {
-		SDL_Init(flag);
+	SDLWindow() noexcept{
+		if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
+			SDL_Log("Unable to initialize SDL: %s", SDL_GetError());
+		}
 		window = { SDL_CreateWindow("Base", 0, 0, 0, 0, SDL_WindowFlags::SDL_WINDOW_RESIZABLE),Deleter()};
 		if (window == nullptr) {
-			throw std::runtime_error(SDL_GetError());
-		}
-		renderer = { SDL_CreateRenderer(GetWindow(), -1, SDL_RendererFlags::SDL_RENDERER_ACCELERATED) ,Deleter() };
-		if (renderer == nullptr) {
-			throw std::runtime_error(SDL_GetError());
+			SDL_Log("Unable to initialise window: %s", SDL_GetError());
 		}
 	}
-
 	void SetWindowConfig() noexcept {
-		SDL_SetWindowSize(GetWindow(), ConstValues::SCR_Width,ConstValues::SCR_Height);
-		SDL_SetWindowTitle(GetWindow(), ConstValues::title.c_str());
+		SDL_SetWindowSize(GetWindow(), Consts::SCR_Width,Consts::SCR_Height);
+		SDL_SetWindowTitle(GetWindow(), Consts::title.c_str());
 		SDL_SetWindowPosition(GetWindow(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 	}
 
 	SDL_Window* GetWindow() const noexcept {
 		return window.get();
 	}
-	SDL_Renderer* GetRenderer() const noexcept {
-		return renderer.get();
-	}
-
 };

@@ -1,12 +1,6 @@
 #include "Vector2.h"
 #include <cmath>
 
-
-
-Vector2::Vector2(const float x, const float y) noexcept : x(x), y(y) 
-{
-}
-
 Vector2 Vector2::operator+(const Vector2& rhs) const noexcept
 {
 	return Vector2(x + rhs.x, y + rhs.y);
@@ -25,6 +19,20 @@ Vector2 Vector2::operator*(const Vector2& rhs) const noexcept
 Vector2 Vector2::operator/(const Vector2& rhs) const noexcept
 {
 	return Vector2(x / rhs.x, y / rhs.y);
+}
+
+Vector2& Vector2::operator+=(const Vector2& rhs)  noexcept
+{
+	this->x += rhs.x;
+	this->y += rhs.y;
+	return *this;
+}
+
+Vector2& Vector2::operator-=(const Vector2& rhs)  noexcept
+{
+	this->x += rhs.x;
+	this->y += rhs.y;
+	return *this;
 }
 
 Vector2 Vector2::operator*(const float rhs) const noexcept

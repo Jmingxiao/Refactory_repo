@@ -1,17 +1,10 @@
 #pragma once
-
-#pragma once
-#include <CodeAnalysis/Warnings.h>
-#pragma warning(push)
-#pragma warning (disable:ALL_CODE_ANALYSIS_WARNINGS)
-#include "SDL.h"
-#pragma warning(pop)
-
 #include <vector>
 #include "Color.h"
 #include "Rectangle.h"
-#include "Transform.h"
-
+#include "Vector2.h"
+#include <memory>
+#include "SDLSystem.h"
 
 struct RenderManager
 {
@@ -19,12 +12,17 @@ struct RenderManager
 	{
 		const Rectangle rect;
 		const Color color;
-		const Transform transform;
+		const Vector2 transform;
 	};
 
-	void Render(const Rectangle& rect, const Color& color, const Transform& trans);
-	void Rendering(SDL_Renderer* renderer) noexcept;
+	RenderManager(SDL_Window* window) noexcept;
+	void Render(const Rectangle& rect, const Color& color, const Vector2& trans) ;
+	void Rendering() noexcept;
+	SDL_Renderer* GetRenderer() const noexcept;
 	void Clear() noexcept;
+private:
 
+	using renderer_ptr = std::unique_ptr<SDL_Renderer, Deleter>;
+	renderer_ptr renderer;
 	std::vector<RectEntry> rectEntries;
 };

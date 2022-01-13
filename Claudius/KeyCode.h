@@ -5,7 +5,7 @@
 #include "SDL.h"
 #pragma warning(pop)
 
-namespace KeyConfig {
+
 
 	enum class KeyCode
 	{
@@ -56,7 +56,3 @@ namespace KeyConfig {
 		default: return KeyCode::INVALID; break;
 		}
 	}
-
-
-
-}

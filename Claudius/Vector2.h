@@ -5,16 +5,14 @@ struct Vector2
 	float x {}; 
 	float y {};
 
-	Vector2() = default;
-	Vector2(const float x, const float y) noexcept;
-
 	Vector2 operator+(const Vector2& rhs) const noexcept;
 	Vector2 operator-(const Vector2& rhs) const noexcept;
 	Vector2 operator*(const Vector2& rhs) const noexcept;
 	Vector2 operator/(const Vector2& rhs) const noexcept;
+	Vector2& operator+=(const Vector2& rhs)  noexcept;
+	Vector2& operator-=(const Vector2& rhs)  noexcept;
 	Vector2 operator*(const float rhs) const noexcept;
 	Vector2 operator/(const float rhs) const noexcept;
-
 	bool operator==(const Vector2& rhs) const noexcept;
 
 	Vector2 perpendicular() const noexcept;
