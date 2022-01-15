@@ -1,7 +1,29 @@
 #include "Game.h"
-#include "RenderManager.h"
-#include <iostream>
-#include "ConstValue.h"
+
+void Game::run() noexcept
+{
+	while (running) {
+		Input();
+		Update();
+		Render();		
+		SDL_Delay(Config::FRAME_DELAY);
+	}
+}
+
+void Game::Input() noexcept{
+	SDL_Event e;
+	while (SDL_PollEvent(&e))
+	{
+		switch (e.type)
+		{
+		case SDL_QUIT: running = false; break;
+		case SDL_KEYDOWN: OnKeyDown(TranslateKeyCode(e.key.keysym.sym)); break;
+		case SDL_KEYUP: break;
+		default: break;
+		}
+	}
+
+}
 
 void Game::Update() noexcept
 {
@@ -11,23 +33,24 @@ void Game::Update() noexcept
 		return;
 	}
 
-	if (snake.CheckOutSideBound(Consts::SCR_Width,Consts::SCR_Height))
+	if (snake.CheckOutSideBound(Config::STAGE_WIDTH, Config::STAGE_HEIGHT))
 	{
 		snake.ResetPlayer();
 		return;
 	}
 
-	if (snake.Gettransform() == apple)
+	if (snake.GetPosition() == apple)
 	{
-		snake.Score();
+		snake.Grow();
 		apple = RandomPositionGenerator();
 	}
 }
 
-void Game::Render(RenderManager& renderManager)
-{
-	snake.Render(renderManager);
-	renderManager.Render({ 0,0,Consts::appleSize,Consts::appleSize }, Consts::appleColor, apple);
+void Game::Render() const noexcept{
+	renderer.enterFrame();
+	snake.Render(renderer);
+	renderer.Render(apple, Color::Red());
+	renderer.exitFrame();
 }
 
 void Game::OnKeyDown(KeyCode key) noexcept

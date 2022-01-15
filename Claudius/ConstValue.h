@@ -1,21 +1,24 @@
 #pragma once
-#include <string>
-#include "Vector2.h"
-namespace Consts {
-	 constexpr unsigned int FrameRate = 50u;
-	 constexpr int SCR_Width = 1000;
-	 constexpr int SCR_Height = 700;
-	 constexpr unsigned int appleSize = 10;
-	 constexpr float snakeSpeed = 10.0f;
-	 constexpr float snakepartoffset = 1.0f;
-	 constexpr unsigned int snakeDefautsize = 10;
-	 constexpr unsigned int snakeMaxLength = 50;
-	 constexpr Color appleColor{ Color::Red() };
-	 constexpr Vector2 startposition{300,300};
-	 constexpr Vector2 Left{-1.0f,0.0f};
-	 constexpr Vector2 Right{1.0f,0.0f};
-	 constexpr Vector2 Up{0.0f,-1.0f};
-	 constexpr Vector2 Down{0.0f,1.0f};
-	 const std::string title = "Snake";
 
+#include <string_view>
+#include "Vector2.h"
+#include "Color.h"
+
+namespace Config {
+	constexpr unsigned ALPHA_OPAQUE = 255;
+	constexpr unsigned ALPHA_TRANSPARENT = 0;
+	 constexpr unsigned int FRAME_DELAY = 50u;
+	 constexpr int STAGE_WIDTH = 1000;
+	 constexpr int STAGE_HEIGHT = 700;
+	 constexpr unsigned int TILE_SIZE = 10;
+	 constexpr unsigned int APPLE_SIZE = TILE_SIZE;
+	 constexpr unsigned int SNAKE_UNIT_SIZE = TILE_SIZE;
+	 constexpr float SNAKE_SPEED = TILE_SIZE;
+	 constexpr Vector2 SNAKE_STARTPOS{300,300};
+	 constexpr Vector2 APPLE_STARTPOS{ 100,100 };
+	 constexpr Vector2 LEFT{-1.0f,0.0f};
+	 constexpr Vector2 RIGHT{1.0f,0.0f};
+	 constexpr Vector2 UP{0.0f,-1.0f};
+	 constexpr Vector2 DOWN{0.0f,1.0f};
+	 constexpr std::string_view TITLE = "Snake";
 }

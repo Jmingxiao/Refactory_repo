@@ -2,8 +2,8 @@
 
 struct Vector2
 {
-	float x {}; 
-	float y {};
+	float _x {}; 
+	float _y {};
 
 	Vector2 operator+(const Vector2& rhs) const noexcept;
 	Vector2 operator-(const Vector2& rhs) const noexcept;

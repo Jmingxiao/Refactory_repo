@@ -50,7 +50,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RenderManager.h">
+    <ClInclude Include="Renderer.h">
       <Filter>Header Files\Systems</Filter>
     </ClInclude>
     <ClInclude Include="Color.h">
@@ -71,10 +71,16 @@
     <ClInclude Include="Player.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="SDLSystem.h">
+    <ClInclude Include="SDLWindow.h">
       <Filter>Header Files\Systems</Filter>
     </ClInclude>
     <ClInclude Include="ConstValue.h">
+      <Filter>Header Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreIncludes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLSystem.h">
       <Filter>Header Files\Systems</Filter>
     </ClInclude>
   </ItemGroup>

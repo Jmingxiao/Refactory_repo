@@ -7,28 +7,25 @@
 #include <vector>
 #include "ConstValue.h"
 
-struct RenderManager;
+class Renderer;
 
-
-struct Snake
+class Snake
 {
 private:
 	using SnakeParts = Vector2;
 
-	Rectangle rect{ 0, 0, Consts::snakeDefautsize, Consts::snakeDefautsize };
-	Color color{Color::Green()};
+	Rectangle rect{ 0, 0, Config::SNAKE_UNIT_SIZE, Config::SNAKE_UNIT_SIZE };
 	Vector2 direction{};
-	Vector2 transform{300.0f,300.0f};
-	std::vector<SnakeParts> snakeparts = {Vector2()};
+	Vector2 position{300.0f,300.0f};
+	std::vector<SnakeParts> snakeparts = {position};
 
 public:
 	void OnKeyDown(KeyCode key) noexcept;
-	void Render(RenderManager& renderManager);				
+	void Render(const Renderer& renderManager) const noexcept;				
 	void Update() noexcept ;
 	void ResetPlayer() noexcept;
-	void Score() noexcept;
+	void Grow() noexcept;
 	bool CheckBodyCollision() const noexcept;
 	bool CheckOutSideBound(const int width, const int height) const noexcept;
-	const Vector2& Gettransform() const noexcept;
-
+	Vector2 GetPosition() const noexcept;
 };

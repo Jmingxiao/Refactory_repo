@@ -168,13 +168,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConstValue.h" />
+    <ClInclude Include="CoreIncludes.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="KeyCode.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Rectangle.h" />
-    <ClInclude Include="RenderManager.h" />
+    <ClInclude Include="Renderer.h" />
     <ClInclude Include="SDLSystem.h" />
+    <ClInclude Include="SDLWindow.h" />
     <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

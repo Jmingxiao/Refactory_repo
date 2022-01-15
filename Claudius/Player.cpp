@@ -1,26 +1,24 @@
 #include "Player.h"
 #include <cmath>
-#include "RenderManager.h"
+#include "Renderer.h"
 #include <iostream>
 #include <utility>
 #include <algorithm>
 
 
-void Snake::Render(RenderManager& renderManager) 
+void Snake::Render(const Renderer& renderer) const noexcept
 {
-	renderManager.Render(rect, color, transform);
 	for (auto part : snakeparts) {
-		renderManager.Render(rect, color, part);
+		renderer.Render(part, Color::Green());
 	}
 }
 
 void Snake::Update() noexcept
 {
-	const auto headdiff = transform - snakeparts.front();
-	const Vector2 speed(Consts::snakeSpeed,Consts::snakeSpeed);
-	transform += speed * direction;
-	snakeparts.front() += headdiff ;
+	const Vector2 speed(Config::SNAKE_SPEED,Config::SNAKE_SPEED);
+	position += speed * direction;
 	std::shift_right(snakeparts.begin(), snakeparts.end(), 1);
+	snakeparts.front() = position;
 }
 
 void Snake::OnKeyDown(KeyCode key) noexcept
@@ -28,16 +26,16 @@ void Snake::OnKeyDown(KeyCode key) noexcept
 	switch (key)
 	{
 	case KeyCode::LEFT_ARROW:
-		direction = Consts::Left;
+		direction = Config::LEFT;
 		break;
 	case KeyCode::RIGHT_ARROW:
-		direction = Consts::Right;
+		direction = Config::RIGHT;
 		break;
 	case KeyCode::UP_ARROW:
-		direction = Consts::Up;
+		direction = Config::UP;
 		break;
 	case KeyCode::DOWN_ARROW:
-		direction = Consts::Down;
+		direction = Config::DOWN;
 		break;
 	default: 
 		direction ={};
@@ -47,30 +45,33 @@ void Snake::OnKeyDown(KeyCode key) noexcept
 
 void Snake::ResetPlayer() noexcept
 {
+	position = Config::SNAKE_STARTPOS;
 	snakeparts.clear();
-	snakeparts.push_back(transform);
+	Grow();
 	direction = {};
-	transform = Consts::startposition;
+	
 }
 
-void Snake::Score() noexcept
+void Snake::Grow() noexcept
 {
-	if (snakeparts.size() < Consts::snakeMaxLength) {
-		snakeparts.push_back(transform+direction*Consts::snakepartoffset);
+	try {
+			snakeparts.push_back(position);
+	}
+	catch (...) {
+		//swallow the exception. The snake wont grow, but the game can keep running. 
 	}
 }
 
- bool Snake::CheckBodyCollision() const noexcept
-{
-	return find(snakeparts.cbegin(),snakeparts.cend(),transform)!=snakeparts.cend();
+ bool Snake::CheckBodyCollision() const noexcept{
+	return find(snakeparts.cbegin()+1,snakeparts.cend(),position) != snakeparts.cend();
 }
 
 bool Snake::CheckOutSideBound(const int width, const int height ) const noexcept
 {
-	return  transform.x > width || transform.x < 0 || transform.y > height || transform.y < 0;
+	return  position._x > width || position._x < 0 || position._y > height || position._y < 0;
 }
 
-const Vector2& Snake::Gettransform() const noexcept
+Vector2 Snake::GetPosition() const noexcept
 {
-	return transform;
+	return position;
 }

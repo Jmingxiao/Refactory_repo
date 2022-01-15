@@ -3,56 +3,56 @@
 
 Vector2 Vector2::operator+(const Vector2& rhs) const noexcept
 {
-	return Vector2(x + rhs.x, y + rhs.y);
+	return Vector2(_x + rhs._x, _y + rhs._y);
 }
 
 Vector2 Vector2::operator-(const Vector2& rhs) const noexcept
 {
-	return Vector2(x - rhs.x, y - rhs.y);
+	return Vector2(_x - rhs._x, _y - rhs._y);
 }
 
 Vector2 Vector2::operator*(const Vector2& rhs) const noexcept
 {
-	return Vector2(x * rhs.x, y * rhs.y);
+	return Vector2(_x * rhs._x, _y * rhs._y);
 }
 
 Vector2 Vector2::operator/(const Vector2& rhs) const noexcept
 {
-	return Vector2(x / rhs.x, y / rhs.y);
+	return Vector2(_x / rhs._x, _y / rhs._y);
 }
 
 Vector2& Vector2::operator+=(const Vector2& rhs)  noexcept
 {
-	this->x += rhs.x;
-	this->y += rhs.y;
+	this->_x += rhs._x;
+	this->_y += rhs._y;
 	return *this;
 }
 
 Vector2& Vector2::operator-=(const Vector2& rhs)  noexcept
 {
-	this->x += rhs.x;
-	this->y += rhs.y;
+	this->_x += rhs._x;
+	this->_y += rhs._y;
 	return *this;
 }
 
 Vector2 Vector2::operator*(const float rhs) const noexcept
 {
-	return Vector2(x * rhs, y * rhs);
+	return Vector2(_x * rhs, _y * rhs);
 }
 
 Vector2 Vector2::operator/(const float rhs) const noexcept
 {
-	return Vector2(x / rhs, y / rhs);
+	return Vector2(_x / rhs, _y / rhs);
 }
 
 bool Vector2::operator==(const Vector2& rhs) const noexcept
 {
-	return (this->x == rhs.x && this->y == rhs.y);
+	return (this->_x == rhs._x && this->_y == rhs._y);
 }
 
 Vector2 Vector2::perpendicular() const noexcept
 {
-	return Vector2(-y, x); // 90 degrees to the right
+	return Vector2(-_y, _x); // 90 degrees to the right
 }
 
 Vector2 Vector2::unit() const noexcept
@@ -64,27 +64,27 @@ Vector2 Vector2::unit() const noexcept
 
 float Vector2::length() const noexcept
 {
-	return sqrtf(x * x + y * y);
+	return sqrtf(_x * _x + _y * _y);
 }
 
 float Vector2::length_squared() const noexcept
 {
-	return x * x + y * y;
+	return _x * _x + _y * _y;
 }
 
 float Vector2::dot(const Vector2& rhs) const noexcept
 {
-	return x * rhs.x + y * rhs.y;
+	return _x * rhs._x + _y * rhs._y;
 }
 
 float Vector2::cross(const Vector2& rhs) const noexcept
 {
-	return x * rhs.y - y * rhs.x;
+	return _x * rhs._y - _y * rhs._x;
 }
 
 void Vector2::normalize() noexcept
 {
 	const float len = length(); 
-	x /= len; 
-	y /= len;
+	_x /= len; 
+	_y /= len;
 }

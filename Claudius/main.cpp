@@ -1,41 +1,19 @@
-﻿#include "RenderManager.h"
-#include "Game.h"
-#include "SDLSystem.h"
-
+﻿#include "Game.h"
+#include <iostream>
 #undef main
-
-void PollEvent(Game& game) noexcept
-{
-	SDL_Event e;
-	while (SDL_PollEvent(&e))
-	{
-		switch (e.type)
-		{
-		case SDL_QUIT: game.running = false; break;
-		case SDL_KEYDOWN: game.OnKeyDown(TranslateKeyCode(e.key.keysym.sym)); break;
-		case SDL_KEYUP: break;
-		default: break;
-		}
-	}
-}
 
 int main()
 {
-	SDLWindow config{};
-	RenderManager renderManager(config.GetWindow());
-	config.SetWindowConfig();
-
-	Game game{};
-	while (game.running)
-	{
-		PollEvent(game);
-
-		game.Update();
-		game.Render(renderManager);
-		renderManager.Rendering();
-		renderManager.Clear();
-		
-		SDL_Delay(Consts::FrameRate);
+	try {		
+		Game game{};
+		game.run();
+	}
+	catch (const std::runtime_error& e) {
+		SDL_Log("Unable to initialize SDL: %s", e.what());
+		std::cerr << "runtime error: " << e.what(); 
+	}
+	catch (...) {
+		std::cerr << "Unknown exception occured. Exiting.";
 	}
 	return 0;
 }
